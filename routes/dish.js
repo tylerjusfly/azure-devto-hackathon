@@ -4,8 +4,10 @@ const {DishCtrl} = require('../controllers/dish')
 const {auth} = require('../middlewares/auth')
 
 router.post('/dish', auth.requireLogin, DishCtrl.CreateDish);
-router.get('/', auth.requireLogin, DishCtrl.Getall);
+router.get('/', DishCtrl.Getall);
 router.delete('/:id', auth.requireLogin, DishCtrl.Delete)
+
+router.get('/dish', (req, res)=> { res.render('createdish')})
 
 
 

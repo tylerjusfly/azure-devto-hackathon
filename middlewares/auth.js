@@ -4,7 +4,7 @@ exports.auth = {
       next()
     }
     else{
-      res.status(404).send('not loggedin')
+      res.status(404).redirect('/signin')
     }
 
 }

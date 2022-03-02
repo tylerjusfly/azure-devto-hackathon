@@ -6,14 +6,14 @@ exports.DishCtrl = {
 
     try{
       const Dishdata = new Dish({
-        Dishowner : req.user.id,
+        Dishowner : req.session.userId,
         Dishname,
         Dishpics,
         Videolink,
         Dishdetails
       })
       await Dishdata.save();
-      res.status(201).send(Dishdata);
+      res.status(201).redirect('/dishes');
     }
     catch(err){
       console.log(err)
