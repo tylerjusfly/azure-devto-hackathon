@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const config = require('./config/auth');
 const mongosession = require('connect-mongodb-session')(session)
+require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -17,7 +18,8 @@ var app = express();
 
 // MongoDB Config
 // const url = 'mongodb://127.0.0.1:27017/StoreApi'
-const url = 'mongodb+srv://momoh:tylerjusfly@clusterme1.tc92k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const url = process.env.CONN_STR
+// const url = 'mongodb://azure-hack:D0YXJpFQOA3aCX6uNGqO8EObPUIRaCwEm0kE6MlaZxNzAmjEHl9gC8X6xQhE82efOLH2QHhIzHIW4jq7Ebk7Qg%3D%3D@azure-hack.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&maxIdleTimeMS=120000&appName=@azure-hack@'
 
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
@@ -27,7 +29,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // Storing session to mongo dataabase.
 const store = new mongosession({
   uri : url,
-  collection : 'mysessions'
+  collection : 'mysessions',
 })
 
 // Setting seesion
