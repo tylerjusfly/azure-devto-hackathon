@@ -4,7 +4,7 @@ const {DishCtrl} = require('../controllers/dish')
 const auth = require('../middlewares/auth')
 
 router.post('/dish', auth.validateToken, DishCtrl.CreateDish);
-router.get('/', auth.validateToken, DishCtrl.Getall);
+router.get('/', DishCtrl.Getall);
 router.delete('/:id', auth.validateToken, DishCtrl.Delete)
 
 
