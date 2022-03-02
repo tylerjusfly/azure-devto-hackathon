@@ -25,7 +25,8 @@ exports.DishCtrl = {
   Getall : async(req, res) => {
     try{
       const list_dishes = await Dish.find().populate('Dishowner', 'Fullname Username Bio');
-      res.status(200).send(list_dishes)
+      // res.status(200).send(list_dishes)
+      res.status(200).render('dish', { list_dishes : list_dishes})
     }
     catch(err){
       console.log(err)

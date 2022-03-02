@@ -5,8 +5,11 @@ const {authController} = require('../controllers/auth')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send( "Welcome to Store API");
+  res.render('index')
+  // res.send( "Welcome to Store API");
 });
+router.get('/signup', (req, res) =>{ res.render('signup')})
+router.get('/signin', (req, res) =>{ res.render('signin')})
 
 router.post('/signup', authController.signUp)
 

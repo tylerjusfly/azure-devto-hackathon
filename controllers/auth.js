@@ -24,7 +24,7 @@ exports.authController = {
         Joined : dateJoined
       })
       await userdata.save()
-      res.status(201).send(userdata)
+      res.status(201).render('/')
       }
     catch(err){
       console.log(err)
@@ -33,26 +33,33 @@ exports.authController = {
   }
 }, // End of SignUP Logic
 
-  /* Login Logic*/
-  SignIn : async (req, res, next) => {
-    const {Username, Password} = req.body
+// Session Login Logic
+SignIn: (req, res) => {
+  let {Username, Password} = req.body
+  
+  User.findOne({Username})
+  .then(user => {
+    // if user record does exist
+    if(user){
+      
+      const isValidPass = bcrypt.compareSync(Password, user.Password)
+      if(isValidPass){
 
-    const user = await User.findOne({Username})
-    if (user){
-      const validPassword = bcrypt.compareSync(Password, user.Password)
-      if (validPassword){
-        let payload = { id : user._id, Username : user.Username }
+        req.session.userId = user._id
+        req.session.username = user.Username
+        return res.render('index')
 
-        // Generating Token
-        let token = jwt.sign(payload, config.secretKey, {expiresIn : '1d'})
-
-        res.status(200).send({
-          AccessToken : token,
-          User : user
-        })
-      }else{ res.status(404).send({message : 'username or password not valid'})}
-
-    }else{ res.status(404).send({message : 'username or password not valid'})}
-  }
+      }else{
+        res.send({message : "password is not correct"})
+      }
+    }else{
+      res.status(400).send({message : "user does not exist"})
+    }
+    
+  })
+  
+  
+}
+// End of login logic
 
 }

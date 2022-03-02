@@ -3,7 +3,10 @@ const express = require('express');
 const  path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const session = require('express-session');
+const config = require('./config/auth');
+const mongosession = require('connect-mongodb-session')(session)
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -11,9 +14,33 @@ const dishRouter = require('./routes/dish');
 
 var app = express();
 
+
+// MongoDB Config
+// const url = 'mongodb://127.0.0.1:27017/StoreApi'
+const url = 'mongodb+srv://momoh:tylerjusfly@clusterme1.tc92k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+
+mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
+const db = mongoose.connection;
+db.once('open', _ => {console.log('Mongo Database connected:', url)})
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+// Storing session to mongo dataabase.
+const store = new mongosession({
+  uri : url,
+  collection : 'mysessions'
+})
+
+// Setting seesion
+app.use(session({
+  secret : config.secretKey,
+  resave : false,
+  saveUninitialized : false,
+  store : store
+}))
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -25,15 +52,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/dishes', dishRouter);
 
-
-// MongoDB Config
-// const url = 'mongodb://127.0.0.1:27017/StoreApi'
-const url = 'mongodb+srv://momoh:tylerjusfly@clusterme1.tc92k.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
-const db = mongoose.connection;
-db.once('open', _ => {console.log('Mongo Database connected:', url)})
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

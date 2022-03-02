@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const {DishCtrl} = require('../controllers/dish')
-const auth = require('../middlewares/auth')
+const {auth} = require('../middlewares/auth')
 
-router.post('/dish', auth.validateToken, DishCtrl.CreateDish);
-router.get('/', DishCtrl.Getall);
-router.delete('/:id', auth.validateToken, DishCtrl.Delete)
+router.post('/dish', auth.requireLogin, DishCtrl.CreateDish);
+router.get('/', auth.requireLogin, DishCtrl.Getall);
+router.delete('/:id', auth.requireLogin, DishCtrl.Delete)
 
 
 
