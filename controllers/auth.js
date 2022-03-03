@@ -24,7 +24,7 @@ exports.authController = {
         Joined : dateJoined
       })
       await userdata.save()
-      res.status(201).render('/')
+      res.status(201).redirect('/signin')
       }
     catch(err){
       console.log(err)
@@ -47,7 +47,7 @@ SignIn: (req, res) => {
 
         req.session.userId = user._id
         req.session.username = user.Username
-        return res.render('index')
+        return res.redirect('/users/dashboard')
 
       }else{
         res.send({message : "password is not correct"})

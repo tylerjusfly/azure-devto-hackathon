@@ -20,16 +20,19 @@ block content
     div.container
       div(class="d-sm-flex align-items-center justify-content-between")
         div 
-          h2(class="") Hi, cooking steals my heart away.
-          h4 Would you love to add your favorite dish to my database?
+          h2(class="") Hi, #{username} Are you still playing hard to get?.
+          h4 add your favorite dish to my database already!
           div(class="d-flex my-5 justify-content-around")
             p 
               button(class="btn btn-outline-light")
-                a(href='/signup') Signup Here
+                a(href='/dishes/dish') Add Dish
             p 
               button(class="btn btn-outline-light")
-                a(href='/signin') SignIn Here
-
+                a(href='#') Edit Bio
+          p 
+            h5 Joined : #{joined}
+            h5 Fullname : #{fullname}
+              
             
 
         img(class="image-fluid w-50 w", src="https://wallpaper.dog/large/20399427.jpg", alt="cookingcartoon")
@@ -40,3 +43,24 @@ block content
 
 
 
+
+
+
+
+
+
+
+
+
+
+//- extends layout
+
+//- block content
+//-     body(style="background-color:pink;") 
+//-         p Welcome to various receipe
+//-         section(class="p-5") 
+//-           div()
+//-             h2=username
+//-               h1=fullname
+//-               h3=userbio
+//-               h3=joined

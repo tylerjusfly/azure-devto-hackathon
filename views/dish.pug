@@ -1,11 +1,14 @@
 extends layout
 
 block content
-    p Welcome to various receipe
-    div
-        each dish, i in list_dishes
-            h2=dish.Dishname 
-            img(src=dish.Dishpics, alt="amala", width="250", height="250")
-            h5=dish.Dishdetails
-            a(href=dish.Videolink, target="_blank") Watch On Youtube   
-            hr
+    body(style="background-color:pink;") 
+        p Welcome to various receipe
+        section(class="p-5") 
+            div(class="container")
+                div(class="row text-center")
+                    each dish, i in list_dishes
+                        div(class="col mb-4 p-3 border")
+                            h2=dish.Dishname 
+                            img(src=dish.Dishpics, alt="amala", width="250", height="250")
+                            h5=dish.Dishdetails
+                            a(class="btn btn-dark", href=dish.Videolink, target="_blank") Watch On Youtube   

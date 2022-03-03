@@ -19,7 +19,6 @@ var app = express();
 // MongoDB Config
 // const url = 'mongodb://127.0.0.1:27017/StoreApi'
 const url = process.env.CONN_STR
-// const url = 'mongodb://azure-hack:D0YXJpFQOA3aCX6uNGqO8EObPUIRaCwEm0kE6MlaZxNzAmjEHl9gC8X6xQhE82efOLH2QHhIzHIW4jq7Ebk7Qg%3D%3D@azure-hack.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&maxIdleTimeMS=120000&appName=@azure-hack@'
 
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;

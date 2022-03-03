@@ -29,7 +29,6 @@ exports.DishCtrl = {
       res.status(200).render('dish', { list_dishes : list_dishes})
     }
     catch(err){
-      console.log(err)
       res.status(404).send({
         error : err,
         message : "We couldn't get all dishes"
