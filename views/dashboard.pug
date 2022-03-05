@@ -20,15 +20,13 @@ block content
     div.container
       div(class="d-sm-flex align-items-center justify-content-between")
         div 
-          h2(class="") Hi, #{username} Are you still playing hard to get?.
-          h4 add your favorite dish to my database already!
+          h2(class="mb-3", style="font-family:'Open Sans', cursive; font-size:1.4rem;") Hi, #{username} Are you still playing hard to get?
+          h4(class="m-2 p-2", style="font-family:'Open Sans', cursive; font-size:1.1rem;") add your favorite dish to my database already!
           div(class="d-flex my-5 justify-content-around")
             p 
-              button(class="btn btn-outline-light")
-                a(href='/dishes/dish') Add Dish
+              a(href='/dishes/dish', class="btn btn-outline-light", style="font-family: 'Open Sans', sans-serif;") Add Dish
             p 
-              button(class="btn btn-outline-light")
-                a(href='#') Edit Bio
+              a(href='#', class="btn btn-outline-light", style="font-family: 'Open Sans', sans-serif;") Edit Bio
           p 
             h5 Joined : #{joined}
             h5 Fullname : #{fullname}
