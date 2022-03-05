@@ -14,32 +14,25 @@ block content
       a:hover{
         color: black;
       }
-      body {
-        height: auto;
-      }
 
   body(style="background-color:pink;")
    section(class="bg-dark text-light p-5 text-center text-sm-start")
     div.container
       div(class="d-sm-flex align-items-center justify-content-between")
         div 
-          h2(class="") Hi, cooking steals my heart away.
-          h4 Would you love to add your favorite dish to my database?
-          div(class="d-flex my-5 justify-content-around")
+          h2 Hey Buddy,
+          h4=message
+          div(class="d-sm-flex my-5 justify-content-around")
             p 
               button(class="btn btn-outline-light")
-                a(href='/signup') Signup Here
-            p 
-              button(class="btn btn-outline-light")
-                a(href='/signin') SignIn Here
+                a(href='#') Go Back
+            //- p 
+            //-   button(class="btn btn-outline-light")
+            //-     a(href='/signin') SignIn Here
 
             
 
-        img(class="image-fluid w-50 w", src="https://wallpaper.dog/large/20399427.jpg", alt="cookingcartoon")
+        img(class="image-fluid w-50 w", src="https://love2dev.com/img/error-message-laptop-1920x1297.jpg", alt="cookingcartoon")
 
 
   script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous")
-
-
-
-

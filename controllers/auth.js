@@ -2,6 +2,7 @@ const User = require('../models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../config/auth');
+const mongooseErrorHandler = require('mongoose-validation-error-message-handler');
 
 
 exports.authController = {
@@ -27,8 +28,8 @@ exports.authController = {
       res.status(201).redirect('/signin')
       }
     catch(err){
-      console.log(err)
-      res.status(404).send(err.message)
+      const error = mongooseErrorHandler(err);
+      res.status(404).render('mainerr', {message : error.message})
       }
   }
 }, // End of SignUP Logic
@@ -50,10 +51,12 @@ SignIn: (req, res) => {
         return res.redirect('/users/dashboard')
 
       }else{
-        res.send({message : "password is not correct"})
+        res.render('mainerr', {
+          message : "password is not correct"
+        })
       }
     }else{
-      res.status(400).send({message : "user does not exist"})
+      res.status(400).render('mainerr', {message : "user does not exist"})
     }
     
   })

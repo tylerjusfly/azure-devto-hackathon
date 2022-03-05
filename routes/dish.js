@@ -5,7 +5,9 @@ const {auth} = require('../middlewares/auth')
 
 router.post('/dish', auth.requireLogin, DishCtrl.CreateDish);
 router.get('/', DishCtrl.Getall);
-router.delete('/:id', auth.requireLogin, DishCtrl.Delete)
+
+// Not accepting delete for now
+// router.delete('/:id', auth.requireLogin, DishCtrl.Delete)
 
 router.get('/dish', (req, res)=> { res.render('createdish')})
 

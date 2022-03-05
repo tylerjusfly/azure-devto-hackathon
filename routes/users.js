@@ -12,7 +12,6 @@ router.get('/dashboard', auth.requireLogin, async(req, res)=>{
   try{
     const userid = req.session.userId
     const user = await User.findById(userid);
-    console.log(user)
     res.status(200).render('dashboard', {
       username : user.Username,
       fullname : user.Fullname,
@@ -22,8 +21,8 @@ router.get('/dashboard', auth.requireLogin, async(req, res)=>{
     });
   }
   catch(err){
-    res.status(404).send({
-      error : err,
+    res.status(404).render('mainerr', {
+      // error : err,
       message : "We couldn't get user"
     })
   }

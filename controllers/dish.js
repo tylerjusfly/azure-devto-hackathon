@@ -1,4 +1,6 @@
 const Dish = require('../models/dish')
+const mongooseErrorHandler = require('mongoose-validation-error-message-handler');
+
 
 exports.DishCtrl = {
   CreateDish : async (req, res, next) => {
@@ -16,8 +18,8 @@ exports.DishCtrl = {
       res.status(201).redirect('/dishes');
     }
     catch(err){
-      console.log(err)
-      res.status(404).send(err.message)
+      const error = mongooseErrorHandler(err);
+      res.status(404).render('mainerr', {message : error.message})
     }
 
   },
@@ -29,7 +31,7 @@ exports.DishCtrl = {
       res.status(200).render('dish', { list_dishes : list_dishes})
     }
     catch(err){
-      res.status(404).send({
+      res.status(404).render('mainerr',{
         error : err,
         message : "We couldn't get all dishes"
       })
@@ -46,7 +48,7 @@ exports.DishCtrl = {
       })
     }
     catch(err){
-      res.send("error")
+      res.render('mainerr', {message : "error"})
     }
 
   }
