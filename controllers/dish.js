@@ -27,7 +27,7 @@ exports.DishCtrl = {
   Getall : async(req, res) => {
     try{
       const list_dishes = await Dish.find().populate('Dishowner', 'Fullname Username Bio');
-      // res.status(200).send(list_dishes)
+      
       res.status(200).render('dish', { list_dishes : list_dishes})
     }
     catch(err){
@@ -38,6 +38,17 @@ exports.DishCtrl = {
     }
 
   },
+
+  // Search : async(req, res) => {
+  //   const userEntry = req.body
+  //   if(req.query.keyword){
+  //     userEntry.$or=[
+  //       {"Dishname" : {$regex : req.query.keyword, $options : 'i'}}
+  //     ];
+  //   }
+  //   let dishes = await Dish.find(userEntry);
+  //   return res.status(200).send(dishes)
+  // },
 
   Delete : async(req, res, next) => {
     try{

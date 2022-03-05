@@ -5,13 +5,13 @@
 1. `SignUp`
 2. `SignIn`
 3. `Visit Dashboard`
-3. `Add a dish that exist in your country to database `
-4. `view dishes without creating any account`
-5. 
+4. `Add a dish that exist in your country to database `
+5. `view dishes without creating any account` 
 
 ## Future Functions
 1. `Edit Button`
 2. `Delete Dish Button`
+3. `Search function`
 
 
 ## https://store-api.azurewebsites.net/
