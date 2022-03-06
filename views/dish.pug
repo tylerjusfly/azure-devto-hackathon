@@ -8,7 +8,7 @@ block content
                 div(class="row text-center")
                     each dish, i in list_dishes
                         div(class="col mb-4 p-3 border text-center" style="display:flex; flex-direction: column; min-height:auto;")
-                            h2(class="mb-3", style="font-family: 'Open Sans', sans-serif;")=dish.Dishname 
+                            h2(class="mb-3", style="font-family: 'Open Sans', sans-serif; font-size:1.5rem;")=dish.Dishname 
                             img(src=dish.Dishpics, alt="foodpicture", width="250", height="250" style="display: block; margin-left: auto; margin-right: auto;")
                             h5(class="m-3", style="font-family:Roboto;")=dish.Dishdetails
                             a(class="btn btn-dark", href=dish.Videolink, target="_blank" style="margin-top:auto;") Watch On Youtube  
