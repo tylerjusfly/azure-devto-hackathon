@@ -9,6 +9,12 @@ block content
                     each dish, i in list_dishes
                         div(class="col mb-4 p-3 border text-center" style="display:flex; flex-direction: column; min-height:auto;")
                             h2(class="mb-3", style="font-family: 'Open Sans', sans-serif;")=dish.Dishname 
-                            img(src=dish.Dishpics, alt="amala", width="250", height="250" style="display: block; margin-left: auto; margin-right: auto;")
+                            img(src=dish.Dishpics, alt="foodpicture", width="250", height="250" style="display: block; margin-left: auto; margin-right: auto;")
                             h5(class="m-3", style="font-family:cursive;")=dish.Dishdetails
-                            a(class="btn btn-dark", href=dish.Videolink, target="_blank" style="margin-top:auto;") Watch On Youtube   
+                            a(class="btn btn-dark", href=dish.Videolink, target="_blank" style="margin-top:auto;") Watch On Youtube  
+
+
+
+            //-         form(action="", method="post" style="max-width:310px; margin:auto;") 
+            //-  input(type="text", name="search", class="form-control mb-3", placeholder="Search")
+            //-  button(type="submit", class="btn btn-dark") Submit
