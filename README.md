@@ -6,7 +6,8 @@
 2. `SignIn`
 3. `Visit Dashboard`
 4. `Add a dish that exist in your country to database `
-5. `view dishes without creating any account` 
+5. `view dishes without creating any account`
+6. `Search for dishes` 
 
 ## Future Functions
 1. `Edit Button`
