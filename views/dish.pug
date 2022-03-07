@@ -3,6 +3,9 @@ extends layout
 block content
     body(style="background-color:pink; ") 
         p(class="text-center m-3" style="font-size:1.5rem; font-family:'Open Sans', cursive; ") Welcome To The Various Dishes
+        form(class="d-flex", action="", method="post" style="max-width:310px; margin:auto;")
+             input(type="text", name="search", class="form-control mb-3", placeholder="Search")
+             button(type="submit", class="btn btn-dark", style="height:35px; max-height:35px; font-family: 'Open Sans', sans-serif;") Submit
         section(class="p-5") 
             div(class="container")
                 div(class="row text-center")
@@ -14,7 +17,5 @@ block content
                             a(class="btn btn-dark", href=dish.Videolink, target="_blank" style="margin-top:auto;") Watch On Youtube  
 
 
-
-            //-         form(action="", method="post" style="max-width:310px; margin:auto;") 
-            //-  input(type="text", name="search", class="form-control mb-3", placeholder="Search")
-            //-  button(type="submit", class="btn btn-dark") Submit
+        
+            

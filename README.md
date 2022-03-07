@@ -11,8 +11,7 @@
 ## Future Functions
 1. `Edit Button`
 2. `Delete Dish Button`
-3. `Search function`
-4. `Pagination`
+3. `Pagination`
 
 
 ## https://store-api.azurewebsites.net/

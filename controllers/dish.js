@@ -6,12 +6,12 @@ exports.DishCtrl = {
   CreateDish : async (req, res, next) => {
     const {Dishname, Dishpics, Videolink, Dishdetails, } = req.body
 
-    // const dishNameToUpper = Dishname.toUpperCase()
+    const dishNameToUpper = Dishname.toUpperCase()
 
     try{
       const Dishdata = new Dish({
         Dishowner : req.session.userId,
-        Dishname, //: dishNameToUpper,
+        Dishname : dishNameToUpper,
         Dishpics,
         Videolink,
         Dishdetails
@@ -40,14 +40,20 @@ exports.DishCtrl = {
 
   },
 
-  // Search : async(req, res) => {
-  //   const search = req.body.search.toUpperCase()
+  Search : async(req, res) => {
+    const search = req.body.search.toUpperCase();
+    const queryStrings = search.split(" ")
+    allQueries = []
+    queryStrings.forEach(elem => {
+      allQueries.push( {Dishname : {$regex : String(elem)} })
+    })
 
-  //   let dishes = await Dish.find(search);
+    let dishes = await Dish.find( { $or : allQueries });
+    if(!dishes || dishes.length === 0) res.status(404).render('mainerr', {message : "no dishes was found"})
 
-  //   return res.status(200).send(dishes);
+    res.status(200).render('dish', {list_dishes : dishes});
 
-  // },
+  },
 
   Delete : async(req, res, next) => {
     try{
