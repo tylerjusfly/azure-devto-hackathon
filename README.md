@@ -1,4 +1,4 @@
-## Hello World, Behold My Dev.To Azure Hackathon
+## Hello World, Behold My Dev.To Azure Hackathon (runners up project)
 # This an API though with PUG as its templating engine.
 
 ## Fuctionalities 
@@ -13,6 +13,9 @@
 1. `Edit Button`
 2. `Delete Dish Button`
 3. `Pagination`
+4. `rewriting`
 
 
-## https://store-api.azurewebsites.net/
+### visit us
+
+https://food-library-azure.herokuapp.com/
