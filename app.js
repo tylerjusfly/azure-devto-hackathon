@@ -6,6 +6,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const config = require('./config/auth');
+const {envVariables} = require('./config/config')
 const mongosession = require('connect-mongodb-session')(session)
 require('dotenv').config()
 
@@ -18,7 +19,7 @@ var app = express();
 
 // MongoDB Config
 // const url = 'mongodb://127.0.0.1:27017/StoreApi'
-const url = process.env.CONN_STR
+const url = envVariables.mongoDbString
 
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 const db = mongoose.connection;
